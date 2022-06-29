@@ -1,8 +1,8 @@
-@extends ('restrict.layout')
+@extends('restrict.layout')
 
-@section ('content')
+@section('content')
 <div>
-    <a href = "{{url('mensagem/create')}}" class="button">Adicionar</a>
+    <a href="{{url('mensagem/create')}}" class="button">Adicionar</a>
 </div>
 <table>
     <thead>
@@ -20,21 +20,29 @@
         <tr>
             <td>{{$mensagem->user->name}}</td>
             <td>{{$mensagem->titulo}}</td>
-            <td>{{$mensagem->mensagem}</td>
+            <td>{{$mensagem->mensagem}}</td>
             <td>
                 @if($mensagem->topicos)
                 @foreach($mensagem->topicos as $topico)
-                <div>{{topico->topico}}</div>
+                <div>{{$topico->topico}}</div>
                 @endforeach
                 @endif
-         </td>
-         <td>
-             <a href="{{route('mensagem.edit' , $mensagem->id}}" class="button">
-                 Editar
-             </a>
-           </td>
-           <td>
-               <form method="POST" action="{{route('mensagem.destroy', $mensagem->id}}" onsubmit="return confirm ('tem certeza?');">
+            </td>
+            <td>
+                <a href="{{route('mensagem.edit,$mensagem->id)}}" class="button">
+                    Editar
+                </a>
+            </td>
+            <td>
+                <form method="POST" action="{{route('mensagem.destroy',$mensagem->id)}}" onsubmit="return confirm('tem certeza?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="button">
+                        Remover
+                    </button>
+            </td>
         </tr>
+        @endforeach
     </tbody>
 </table>
+@endsection
