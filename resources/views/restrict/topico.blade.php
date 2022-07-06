@@ -1,6 +1,6 @@
 @extends('restrict.layout')
 
-section ('context')
+@section ('content')
 <div>
     <a href="{{url('topico/create')}}" class="button">Adicionar</a>
 </div>
@@ -16,8 +16,8 @@ section ('context')
         @foreach($topicos as $topico)
         <tr>
             <td>{{$topico->topico}}</td>
-            </td>
-            <a href="{{route('topico.edit',$topico->id}}" class="button">
+            <td>
+            <a href="{{route('topico.edit',$topico->id)}}" class="button">
                 Editar
             </a>
             </td>
@@ -34,4 +34,4 @@ section ('context')
         @endforeach
     </tbody>
 </table>
-endsection
+@endsection

@@ -29,7 +29,7 @@
                 @endif
             </td>
             <td>
-                <a href="{{route('mensagem.edit,$mensagem->id)}}" class="button">
+                <a href="{{route('mensagem.edit',$mensagem->id)}}" class="button">
                     Editar
                 </a>
             </td>
